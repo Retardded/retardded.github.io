@@ -63,6 +63,23 @@ body {
     animation: fadeInUp 0.8s ease-out;
 }
 
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+    margin: 0 auto var(--spacing-md) auto;
+    display: block;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.avatar:hover {
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+}
+
 .name {
     font-size: 2.5rem;
     font-weight: 700;
@@ -455,6 +472,11 @@ body {
         padding: var(--spacing-md) 0;
     }
 
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+
     .contact {
         flex-direction: column;
     }
@@ -499,6 +521,11 @@ body {
 @media (max-width: 480px) {
     .name {
         font-size: 1.75rem;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
     }
 
     .skills-grid {
