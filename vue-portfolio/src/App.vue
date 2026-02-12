@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted, onUnmounted } from 'vue'
 
 type Project = {
   name: string
@@ -77,6 +77,46 @@ const goToNext = (key: string, total: number) => {
   const current = sliderIndices[key] ?? 0
   goToSlide(key, current + 1, total)
 }
+
+const viewerProject = ref<Project | null>(null)
+const viewerIndex = ref(0)
+
+const openViewer = (project: Project, index: number) => {
+  viewerProject.value = project
+  viewerIndex.value = index
+}
+
+const closeViewer = () => {
+  viewerProject.value = null
+}
+
+const nextInViewer = () => {
+  const project = viewerProject.value
+  if (!project || project.images.length === 0) return
+  viewerIndex.value = (viewerIndex.value + 1) % project.images.length
+}
+
+const prevInViewer = () => {
+  const project = viewerProject.value
+  if (!project || project.images.length === 0) return
+  viewerIndex.value =
+    (viewerIndex.value - 1 + project.images.length) % project.images.length
+}
+
+const handleViewerKeydown = (event: KeyboardEvent) => {
+  if (!viewerProject.value) return
+  if (event.key === 'Escape') closeViewer()
+  if (event.key === 'ArrowRight') nextInViewer()
+  if (event.key === 'ArrowLeft') prevInViewer()
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleViewerKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleViewerKeydown)
+})
 
 const year = ref(2026)
 </script>
@@ -216,6 +256,7 @@ const year = ref(2026)
                     loading="lazy"
                     class="project-image"
                     :class="{ active: sliderIndices[project.name] === i }"
+                    @click="openViewer(project, i)"
                   />
                 </div>
                 <button
@@ -290,6 +331,47 @@ const year = ref(2026)
             <a href="#top">back to top ↑</a>
           </div>
         </footer>
+      </div>
+      <div
+        v-if="viewerProject"
+        class="image-viewer"
+        role="dialog"
+        aria-modal="true"
+        @click.self="closeViewer"
+      >
+        <div class="image-viewer-inner">
+          <button
+            type="button"
+            class="image-viewer-close"
+            aria-label="Close image"
+            @click="closeViewer"
+          >
+            ×
+          </button>
+          <button
+            v-if="viewerProject.images.length > 1"
+            type="button"
+            class="image-viewer-nav image-viewer-nav--prev"
+            aria-label="Previous image"
+            @click.stop="prevInViewer"
+          >
+            ‹
+          </button>
+          <img
+            :src="viewerProject.images[viewerIndex]"
+            :alt="`${viewerProject.name} full view ${viewerIndex + 1}`"
+            class="image-viewer-img"
+          />
+          <button
+            v-if="viewerProject.images.length > 1"
+            type="button"
+            class="image-viewer-nav image-viewer-nav--next"
+            aria-label="Next image"
+            @click.stop="nextInViewer"
+          >
+            ›
+          </button>
+        </div>
       </div>
     </main>
   </div>

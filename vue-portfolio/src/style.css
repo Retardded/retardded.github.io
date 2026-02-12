@@ -359,6 +359,7 @@ html {
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
+  cursor: zoom-in;
 }
 
 .project-image.active {
@@ -507,6 +508,63 @@ html {
   padding: 0.15rem 0.5rem;
 }
 
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.image-viewer-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.image-viewer-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.image-viewer-close {
+  position: absolute;
+  top: -32px;
+  right: 0;
+  border: none;
+  background: transparent;
+  color: #f6f6f4;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.image-viewer-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.6);
+  color: #f6f6f4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.image-viewer-nav--prev {
+  left: -40px;
+}
+
+.image-viewer-nav--next {
+  right: -40px;
+}
+
 @media (max-width: 720px) {
   .glass-card {
     padding: var(--space-md);
@@ -518,5 +576,10 @@ html {
 
   .project-slider {
     height: 220px;
+  }
+
+  .image-viewer-inner {
+    max-width: 94vw;
+    max-height: 80vh;
   }
 }
