@@ -14,7 +14,7 @@ const projects: Project[] = reactive([
   {
     name: 'dedouleur',
     year: '2026',
-    description: 'Portfolio for a tattoo artist friend.',
+    description: 'A small business card website for my friend, which demonstrates his creative work as a contemporary artist',
     tech: ['React', 'Vue.js', 'TypeScript'],
     primaryTech: ['React', 'Vue.js', 'TypeScript'],
     images: [
@@ -26,7 +26,7 @@ const projects: Project[] = reactive([
   {
     name: 'FiveCorner',
     year: '2025',
-    description: 'Streetwear brand site for FiveCorner.',
+    description: 'The website is a catalog for a clothing brand, of which I was a part of the team. It is made in a minimalistic style, with a catalog, a shopping cart, a telegram bot for tracking orders, and the use of an API to fill in the order address.',
     tech: ['HTML5', 'CSS3', 'JavaScript'],
     primaryTech: ['JavaScript'],
     images: [
@@ -38,7 +38,7 @@ const projects: Project[] = reactive([
   {
     name: 'HediRaiser',
     year: '2022',
-    description: 'Streetwear brand site for HediRaiser.',
+    description: 'The first major project I worked on was my first commercial experience, a lot of edits, and a pleasant experience working with Oscar.',
     tech: ['HTML5', 'CSS3', 'JavaScript'],
     primaryTech: ['JavaScript'],
     images: [
@@ -222,9 +222,7 @@ const year = ref(2026)
                 </div>
                 <p class="experience-company">Self‑employed</p>
                 <ul class="experience-list">
-                  <li>
-                    Designing and building small brand sites and portfolios.
-                  </li>
+                  <li></li>
                 </ul>
               </article>
             </div>
@@ -303,7 +301,7 @@ const year = ref(2026)
                     {{ project.year }}
                   </span>
                 </div>
-                <p class="project-description">
+                <p v-if="project.description" class="project-description">
                   {{ project.description }}
                 </p>
                 <div class="project-tech">

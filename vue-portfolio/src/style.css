@@ -235,8 +235,9 @@ html {
 }
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 0.5rem;
   margin-top: 0.75rem;
 }
@@ -248,12 +249,14 @@ html {
   font-size: 0.8rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
   text-align: center;
 }
 
 .skill-name {
   white-space: nowrap;
+  text-align: center;
 }
 
 .skill-level {
