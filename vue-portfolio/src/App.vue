@@ -56,6 +56,7 @@ const skills = reactive([
   { name: 'TypeScript' },
   { name: 'Vue.js' },
   { name: 'React' },
+  { name: 'Vite' },
   { name: 'Git' },
 ])
 
