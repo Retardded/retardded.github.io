@@ -221,7 +221,9 @@ const year = ref(2026)
                 </div>
                 <p class="experience-company">Self‑employed</p>
                 <ul class="experience-list">
-                  <li></li>
+                  <li>
+                    Creating individual solutions for each project, making hundreds of edits to ensure customer satisfaction.
+                  </li>
                 </ul>
               </article>
             </div>
