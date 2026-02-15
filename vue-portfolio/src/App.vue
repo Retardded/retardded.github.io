@@ -140,7 +140,7 @@ const year = ref(2026)
                 <h1 class="name">Nikita Oleynichenko</h1>
                 <span class="badge-pill">Front‑End Developer</span>
               </div>
-              <p class="title">Front‑end developer. Minimal UI. Monospace.</p>
+              <p class="title">Front‑End developer.</p>
             </div>
           </div>
 
@@ -184,8 +184,7 @@ const year = ref(2026)
           </div>
           <div class="section-body">
             <p class="muted">
-              Front‑end developer focused on clean, responsive interfaces with
-              a minimal UI.
+              Front‑end developer focused on clean, responsive interfaces.
             </p>
           </div>
         </section>
