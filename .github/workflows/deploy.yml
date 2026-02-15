@@ -32,6 +32,11 @@ jobs:
         working-directory: vue-portfolio
         run: npm ci
 
+      - name: Copy images into build
+        run: |
+          mkdir -p vue-portfolio/public/images
+          cp -r images/. vue-portfolio/public/images/
+
       - name: Build
         working-directory: vue-portfolio
         run: npm run build
