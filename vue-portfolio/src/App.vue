@@ -141,7 +141,6 @@ const year = ref(2026)
                 <h1 class="name">Nikita Oleynichenko</h1>
                 <span class="badge-pill">Front‑End Developer</span>
               </div>
-              <p class="title">Front‑End developer.</p>
             </div>
           </div>
 
